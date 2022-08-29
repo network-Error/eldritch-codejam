@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    width: 100vw;
+    height: 120vh;
+    background-image: url('./assets/home.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardImg {
+    background-image: url('./assets/Ancients/Azathoth.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.ancient-card {
+    background-image: url('./assets/Ancients/Azathoth.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    min-height: 260px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.active-card {
+    border: 2px solid green;
+}
+
+.level-easy {
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.active-level {
+    border-color: green;
+    color: green;
+}
+
+.deck-container {
+    padding-right: 15px;
+}
+
+.states-cards {
+    width: 200px;
+    height: 250px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.top-line,
+.middle-line,
+.bottom-line {
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header-title,
+.header-title-middle,
+.header-title-bottom {
+    color: white;
+}
+
+.count-container,
+.count-container-middle,
+.count-container-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.count-num {
+    color: white;
+    border: 2px solid brown;
+    padding: 8px;
+    background-color: brown;
+}
+.count-num:first-child {
+    background-color: green;
+}
+.count-num:last-child {
+    background-color: blue;
+}
+
+.deck-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.deck {
+    width: 130px;
+    height: 190px;
+    background-image: url('./assets/mythicCardBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.last-card {
+    width: 130px;
+    height: 190px;
+    background-size: cover;
+}
