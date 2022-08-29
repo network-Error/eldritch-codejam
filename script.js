@@ -58,7 +58,7 @@ const clickDeck = () => {
             const afterBegin = 'afterbegin';
             const beforeEnd = 'beforeend';
             const setElementTop = (line, afterbegin, beforeend) => {
-                line.insertAdjacentHTML(afterbegin, `<span class="header-title">Header Text</span>`);
+                line.insertAdjacentHTML(afterbegin, `<span class="header-title">Первая стадия</span>`);
                 line.insertAdjacentHTML(beforeend, `<div class="count-container"></div>`);
 
                 const countContainer = document.querySelector('.count-container');
@@ -70,25 +70,25 @@ const clickDeck = () => {
             setElementTop(topLine, afterBegin, beforeEnd);
 
             const setElementMiddle = (line, after, before) => {
-                line.insertAdjacentHTML(after, `<span class="header-title-middle">Header Title Middle</span>`);
+                line.insertAdjacentHTML(after, `<span class="header-title-middle">Вторая стадия</span>`);
                 line.insertAdjacentHTML(before, `<div class="count-container-middle"></div>`);
 
                 const countContainer = document.querySelector('.count-container-middle');
                 countContainer.insertAdjacentHTML(afterBegin, `<div class="count-num">2</div>`);
-                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">1</div>`);
                 countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">3</div>`);
+                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">1</div>`);
             }
 
             setElementMiddle(middleLine, afterBegin, beforeEnd);
 
             const setElementBottom = (line, after, before) => {
-                line.insertAdjacentHTML(after, `<span class="header-title-bottom">Header Title Bottom</span>`);
+                line.insertAdjacentHTML(after, `<span class="header-title-bottom">Третья стадия</span>`);
                 line.insertAdjacentHTML(before, `<div class="count-container-bottom"></div>`);
 
                 const countContainer = document.querySelector('.count-container-bottom');
-                countContainer.insertAdjacentHTML(afterBegin, `<div class="count-num">3</div>`);
-                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">2</div>`);
-                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">1</div>`);
+                countContainer.insertAdjacentHTML(afterBegin, `<div class="count-num">2</div>`);
+                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">4</div>`);
+                countContainer.insertAdjacentHTML(beforeEnd, `<div class="count-num">0</div>`);
             }
 
             setElementBottom(bottomLine, afterBegin, beforeEnd);
@@ -219,16 +219,17 @@ const clickDeck = () => {
                     // console.log(brownCards);
                 }
                 const arrFirstRound = greenCards.concat(brownCards, blueCards);
-                // console.log(arrFirstRound);
+                // console.log(greenCards, brownCards, blueCards);
 
                 let countNumGreen = document.querySelectorAll('div.top-line > div > .count-num')[0];
                 let countNumBrown = document.querySelectorAll('div.top-line > div > .count-num')[1];
                 let countNumBlue = document.querySelectorAll('div.top-line > div > .count-num')[2];
+                let headerText = document.querySelector('div.top-line > span.header-title');
 
                 countNumGreen.innerHTML = greenCards.length;
                 countNumBrown.innerHTML = brownCards.length;
                 countNumBlue.innerHTML = blueCards.length;
-                console.log(arrFirstRound);
+                // console.log(arrFirstRound);
                 deck.onclick = () => {
                     // console.log(brownCards);
                     // lastCard.style.backgroundImage = brownCards.shift(brownCards[0]);
@@ -236,15 +237,162 @@ const clickDeck = () => {
                     // console.log(brownCards);
 
                     for (let q = 0; q < 1; q++) {
+                        if (arrFirstRound.length === 1) {
+                            // deck.style.visibility = 'hidden';
+                            headerText.style.color = 'red';
+                            roundTwo();
+                        }
+
+
                         let randomEl = Math.floor(Math.random() * arrFirstRound.length);
-                        console.log(randomEl);
+                        // console.log(randomEl);
                         let randArr = arrFirstRound.shift(arrFirstRound[randomEl]);
                         console.log(randArr);
+
+
+
+                        // console.log(randArr.includes('green'));
+
+
+                        // if (randArr.includes('green')) {
+                        //     countNumGreen.innerHTML = greenCards.length - 1;
+                        // } else if (randArr.includes('brown')) {
+                        //     countNumBrown.innerHTML = brownCards.length - 1;
+                        // } else if (randArr.includes('blue')) {
+                        //     countNumBlue.innerHTML = blueCards.length - 1;
+                        // } else {
+                        //     console.log('Not minus');
+                        // }
+                        lastCard.style.backgroundImage = randArr;
                     }
                     console.log(arrFirstRound);
+                    // console.log(greenCards, brownCards, blueCards);
                 }
                 // console.log(countNumGreen, countNumBrown, countNumBlue);
                 // console.log(arrFirstRound);
+
+                const roundTwo = () => {
+                    const arrGreen = Object.entries(mythicCards.green);
+                    const arrBrown = Object.entries(mythicCards.brown);
+                    const arrBlue = Object.entries(mythicCards.blue);
+                    const greenCards = [];
+                    const brownCards = [];
+                    const blueCards = [];
+
+                    for (let i = 0; i < 2; i++) {
+                        let randomEl = Math.floor(Math.random() * arrGreen.length);
+                        let getRandomEl = arrGreen[randomEl][1];
+                        greenCards[i] = getRandomEl;
+                        // console.log(greenCards);
+                    }
+    
+                    for (let j = 0; j < 3; j++) {
+                        let randomEl = Math.floor(Math.random() * arrBrown.length);
+                        let getRandomEl = arrBrown[randomEl][1];
+                        brownCards[j] = getRandomEl;
+                        // console.log(brownCards);
+                    }
+    
+                    for (let k = 0; k < 1; k++) {
+                        let randomEl = Math.floor(Math.random() * arrBlue.length);
+                        let getRandomEl = arrBlue[randomEl][1];
+                        blueCards[k] = getRandomEl;
+                        // console.log(brownCards);
+                    }
+                    const arrTwoRound = greenCards.concat(brownCards, blueCards);
+                    // console.log(greenCards, brownCards, blueCards);
+    
+                    let countNumGreen = document.querySelectorAll('div.middle-line > div > .count-num')[0];
+                    let countNumBrown = document.querySelectorAll('div.middle-line > div > .count-num')[1];
+                    let countNumBlue = document.querySelectorAll('div.middle-line > div > .count-num')[2];
+                    let headerTitleMiddle = document.querySelector('div.middle-line > span.header-title-middle');
+    
+                    countNumGreen.innerHTML = greenCards.length;
+                    countNumBrown.innerHTML = brownCards.length;
+                    countNumBlue.innerHTML = blueCards.length;
+
+                    deck.onclick = () => {
+    
+                        for (let q = 0; q < 1; q++) {
+                            if (arrTwoRound.length === 1) {
+                                // deck.style.visibility = 'hidden';
+                                headerTitleMiddle.style.color = 'red';
+                                roundThree();
+                            }
+    
+    
+                            let randomEl = Math.floor(Math.random() * arrTwoRound.length);
+                            // console.log(randomEl);
+                            let randArr = arrTwoRound.shift(arrTwoRound[randomEl]);
+                            console.log(randArr);
+    
+                            lastCard.style.backgroundImage = randArr;
+                        }
+                        console.log(arrTwoRound);
+                        // console.log(greenCards, brownCards, blueCards);
+                    }
+
+                    const roundThree = () => {
+                        const arrGreen = Object.entries(mythicCards.green);
+                        const arrBrown = Object.entries(mythicCards.brown);
+                        const arrBlue = Object.entries(mythicCards.blue);
+                        const greenCards = [];
+                        const brownCards = [];
+                        const blueCards = [];
+    
+                        for (let i = 0; i < 2; i++) {
+                            let randomEl = Math.floor(Math.random() * arrGreen.length);
+                            let getRandomEl = arrGreen[randomEl][1];
+                            greenCards[i] = getRandomEl;
+                            // console.log(greenCards);
+                        }
+        
+                        for (let j = 0; j < 4; j++) {
+                            let randomEl = Math.floor(Math.random() * arrBrown.length);
+                            let getRandomEl = arrBrown[randomEl][1];
+                            brownCards[j] = getRandomEl;
+                            // console.log(brownCards);
+                        }
+        
+                        for (let k = 0; k < 0; k++) {
+                            let randomEl = Math.floor(Math.random() * arrBlue.length);
+                            let getRandomEl = arrBlue[randomEl][1];
+                            blueCards[k] = getRandomEl;
+                            // console.log(brownCards);
+                        }
+                        const arrThreeRound = greenCards.concat(brownCards, blueCards);
+                        // console.log(greenCards, brownCards, blueCards);
+        
+                        let countNumGreen = document.querySelectorAll('div.bottom-line > div > .count-num')[0];
+                        let countNumBrown = document.querySelectorAll('div.bottom-line > div > .count-num')[1];
+                        let countNumBlue = document.querySelectorAll('div.bottom-line > div > .count-num')[2];
+                        let headerTitleBottom = document.querySelector('div.bottom-line > span.header-title-bottom');
+        
+                        countNumGreen.innerHTML = greenCards.length;
+                        countNumBrown.innerHTML = brownCards.length;
+                        countNumBlue.innerHTML = blueCards.length;
+    
+                        deck.onclick = () => {
+        
+                            for (let q = 0; q < 1; q++) {
+                                if (arrThreeRound.length === 1) {
+                                    headerTitleBottom.style.color = 'red';
+                                    deck.style.visibility = 'hidden';
+                                }
+        
+        
+                                let randomEl = Math.floor(Math.random() * arrThreeRound.length);
+                                // console.log(randomEl);
+                                let randArr = arrThreeRound.shift(arrThreeRound[randomEl]);
+                                console.log(randArr);
+        
+                                lastCard.style.backgroundImage = randArr;
+                            }
+                            console.log(arrThreeRound);
+                            // console.log(greenCards, brownCards, blueCards);
+                        }
+                    }
+                }
 
             }
             firstRound();

@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .main {
@@ -12,7 +13,6 @@
     background-size: cover;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .cardImg {
@@ -48,14 +48,17 @@
     color: green;
 }
 
+.levels-container {
+    padding-top: 15px;
+}
+
 .deck-container {
     padding-right: 15px;
 }
 
 .states-cards {
-    width: 200px;
-    height: 250px;
-    border: 1px solid red;
+    width: 150px;
+    height: 245px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
